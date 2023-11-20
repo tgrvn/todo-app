@@ -1,11 +1,7 @@
 <template>
-    <div class="bg-gray-900">
-        <Aside />
-
-        <div class="h-screen"></div>
-    </div>
+    <h1>Shared</h1>
 </template>
 
 <script setup>
-import Aside from "@/Shared/Aside.vue";
+
 </script>

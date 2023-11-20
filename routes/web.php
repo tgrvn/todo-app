@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegistrationController;
+use App\Http\Controllers\Auth\PasswordResetController;
+use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,10 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Home');
-});
+Route::get('/', [TodoController::class, 'index'])->name('todos');
+Route::get('/shared', [TodoController::class, 'shared'])->name('shared');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/register', [RegistrationController::class, 'index'])->name('register');
+Route::get('/forgot-password', [PasswordResetController::class, 'index'])->name('reset-password');
+
