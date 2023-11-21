@@ -7,5 +7,5 @@
 </template>
 
 <script setup>
-import Aside from "@/Shared/Aside.vue";
+import Aside from "../Shared/Aside.vue";
 </script>

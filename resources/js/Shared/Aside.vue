@@ -1,6 +1,5 @@
 <template>
     <button
-        @click="toggleModal"
         data-drawer-target="default-sidebar"
         data-drawer-toggle="default-sidebar"
         aria-controls="default-sidebar"
@@ -31,10 +30,7 @@
         <div
             class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800"
         >
-            <Link
-                href="/todos"
-                class="flex items-center ps-2.5 mb-5"
-            >
+            <Link href="/todos" class="flex items-center ps-2.5 mb-5">
                 <img
                     :src="$page.props.app.logo"
                     class="h-6 me-3 sm:h-7"
@@ -47,11 +43,15 @@
             </Link>
 
             <ul class="space-y-2 font-medium">
-                <Navlink :href="route('todos')" header="Усі задачі">
-                    <i class="fa-solid fa-list-check"></i>
+                <Navlink :href="route('todos')" header="Усі дошки">
+                    <i class="fa-solid fa-table-columns"></i>
                 </Navlink>
 
-                <Navlink :href="route('shared')" header="Спільні задачі">
+                <Navlink :href="route('shared')" header="Обрані">
+                    <i class="fa-solid fa-star"></i>
+                </Navlink>
+
+                <Navlink :href="route('shared')" header="Спільні дошки">
                     <i class="fa-solid fa-share-nodes"></i>
                 </Navlink>
             </ul>
@@ -74,12 +74,5 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import Navlink from "./Navlink.vue";
-
-const isOpenAside = ref(false);
-
-function toggleModal() {
-    isOpenAside.value = !isOpenAside.value;
-}
 </script>
