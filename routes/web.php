@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\Auth\PasswordResetController;
+use App\Http\Controllers\Auth\SessionsController;
 use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,10 +18,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TodoController::class, 'index'])->name('todos');
-Route::get('/shared', [TodoController::class, 'shared'])->name('shared');
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [SessionsController::class, 'create'])->name('login');
+    Route::post('/login', [SessionsController::class, 'store'])->name('login-user');
+    Route::get('/forgot-password', [PasswordResetController::class, 'index'])->name('reset-password');
+    Route::get('/register', [RegistrationController::class, 'create'])->name('register');
+    Route::post('/register', [RegistrationController::class, 'store'])->name('register-user');
+});
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::get('/register', [RegistrationController::class, 'index'])->name('register');
-Route::get('/forgot-password', [PasswordResetController::class, 'index'])->name('reset-password');
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [SessionsController::class, 'destroy'])->name('logout');
 
+    Route::get('/', [TodoController::class, 'index'])->name('todos');
+    Route::get('/shared', [TodoController::class, 'shared'])->name('shared');
+});

@@ -30,7 +30,7 @@
         <div
             class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800"
         >
-            <Link href="/todos" class="flex items-center ps-2.5 mb-5">
+            <Link href="/" class="flex items-center ps-2.5 mb-5">
                 <img
                     :src="$page.props.app.logo"
                     class="h-6 me-3 sm:h-7"
@@ -51,9 +51,9 @@
                     <i class="fa-solid fa-star"></i>
                 </Navlink>
 
-                <Navlink :href="route('shared')" header="Спільні дошки">
+                <!-- <Navlink :href="route('shared')" header="Спільні дошки">
                     <i class="fa-solid fa-share-nodes"></i>
-                </Navlink>
+                </Navlink> -->
             </ul>
 
             <div
@@ -65,7 +65,7 @@
                     <i class="fa-solid fa-gear"></i>
                 </Navlink>
 
-                <Navlink href="#" header="Вийти">
+                <Navlink method="post" as="button" :href="route('logout')" header="Вийти">
                     <i class="fa-solid fa-right-from-bracket"></i>
                 </Navlink>
             </ul>

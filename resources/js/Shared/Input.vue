@@ -13,8 +13,11 @@
             :id="name"
             :placeholder="placeholder"
             :required="required"
-            :value="value"
+            :value="modelValue"
+            @input="$emit('update:modelValue', $event.target.value)"
         />
+
+        <div v-if="error" class="text-sm text-red-500 mt-1">*{{ error }}</div>
     </div>
 </template>
 
@@ -23,14 +26,14 @@ defineProps({
     name: String,
     label: String,
     type: String,
-    value: {
-        type: String,
-        default: "",
-    },
     placeholder: String,
     required: {
         type: Boolean,
         default: false,
     },
+    error: String,
+    modelValue: String
 });
+
+defineEmits(['update:modelValue'])
 </script>

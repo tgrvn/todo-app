@@ -1,6 +1,6 @@
 import { createApp, h } from "vue";
 import { Link, createInertiaApp } from "@inertiajs/vue3";
-import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.es';
+import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.es";
 import Main from "./Layouts/Main.vue";
 
 createInertiaApp({
@@ -11,6 +11,10 @@ createInertiaApp({
         if (page.default.layout === undefined) page.default.layout = Main;
 
         return page;
+    },
+    progress: {
+        delay: 150,
+        color: "#29d",
     },
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })

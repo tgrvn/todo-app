@@ -6,25 +6,39 @@
         :footerLinkHref="route('register')"
     >
         <template v-slot:form>
-            <form class="space-y-4 md:space-y-6" action="#">
+            <form
+                class="space-y-4 md:space-y-6"
+                @submit.prevent="form.post(route('login-user'))"
+            >
                 <Input
                     name="email"
                     type="email"
+                    v-model="form.email"
+                    :error="form.errors.email"
                     placeholder="example@company.com"
                 >
                     Ваша пошта
                 </Input>
 
-                <Input name="password" type="password" placeholder="••••••••">
+                <Input
+                    name="password"
+                    type="password"
+                    placeholder="••••••••"
+                    :error="form.errors.password"
+                    v-model="form.password"
+                >
                     Ваш пароль
                 </Input>
 
                 <div class="flex items-center justify-between">
-                    <Checkbox name="remember_me" value="remember_me">
+                    <Checkbox name="remember" v-model:checked="form.remember">
                         Запамʼятати мене
                     </Checkbox>
 
-                    <Link class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
+                    <Link
+                        href="#"
+                        class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
+                    >
                         Забули пароль?
                     </Link>
                 </div>
@@ -47,4 +61,11 @@ import Checkbox from "../../Shared/Checkbox.vue";
 import Input from "../../Shared/Input.vue";
 import Button from "../../Shared/Button.vue";
 import AuthFormLayout from "../../Layouts/AuthFormLayout.vue";
+import { useForm } from "@inertiajs/vue3";
+
+const form = useForm({
+    email: null,
+    password: null,
+    remember: false,
+});
 </script>

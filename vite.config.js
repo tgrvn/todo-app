@@ -11,6 +11,11 @@ export default defineConfig({
         }),
     ],
     server: {
-        host: true,
-    }
+        hmr: {
+            host: "localhost",
+        },
+        watch: {
+            usePolling: true,
+        },
+    },
 });
