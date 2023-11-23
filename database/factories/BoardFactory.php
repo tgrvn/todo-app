@@ -18,6 +18,7 @@ class BoardFactory extends Factory
     {
         return [
             'title' => fake()->words(2, true),
+            'theme_id' => rand(1, 12),
         ];
     }
 }

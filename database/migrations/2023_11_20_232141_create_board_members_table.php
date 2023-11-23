@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('board_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('role_id')->default(1);
+            $table->boolean('is_creator')->default(true); //for tests
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

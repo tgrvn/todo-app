@@ -35,6 +35,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'pivot'
     ];
 
     /**
@@ -48,7 +49,7 @@ class User extends Authenticatable
     ];
 
     public function boards() {
-        return $this->belongsToMany(Board::class, 'board_members', 'user_id', 'board_id');
+        return $this->belongsToMany(Board::class, 'board_members');
     }
 
     public function comments() {

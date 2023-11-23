@@ -33,8 +33,7 @@ class DatabaseSeeder extends Seeder
                             ->has(Comment::factory()->count(3)->state(['user_id' => 1]))
                             ->count(2)
                     )->count(3)
-                )->state(['theme_id' => 1])
-                ->count(2)
+                )->count(18)
             )->create();
     }
 }

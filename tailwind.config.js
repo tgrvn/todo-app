@@ -6,9 +6,11 @@ export default {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            backdropBrightness: {
+                25: "0.85",
+            },
+        },
     },
-    plugins: [
-        require("@tailwindcss/forms")
-    ],
+    plugins: [require("@tailwindcss/forms")],
 };

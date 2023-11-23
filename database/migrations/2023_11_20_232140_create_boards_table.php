@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('theme_id');
             $table->timestamps();
 
-            $table->foreign('theme_id')->references('id')->on('board_backgrounds')->onDelete('cascade');
+            $table->foreign('theme_id')->references('id')->on('board_themes')->onDelete('cascade');
         });
     }
 

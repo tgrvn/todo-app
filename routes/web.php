@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\SessionsController;
-use App\Http\Controllers\TodoController;
+use App\Http\Controllers\BoardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +28,5 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [SessionsController::class, 'destroy'])->name('logout');
 
-    Route::get('/', [TodoController::class, 'index'])->name('todos');
-    Route::get('/shared', [TodoController::class, 'shared'])->name('shared');
+    Route::get('/', [BoardController::class, 'index'])->name('boards');
 });
