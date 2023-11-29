@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\BoardResource;
 use App\Models\Board;
+use App\Models\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -18,8 +18,11 @@ class BoardController extends Controller
             return $query->where('title', 'like', '%' . $search . '%');
         })->paginate(14)->withQueryString();
 
+        $themes = Theme::all();
+
         return Inertia::render('Boards/Index', [
-            'boards' => collect($boards)
+            'boards' => $boards,
+            'themes' => $themes
         ]);
     }
 }

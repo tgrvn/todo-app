@@ -26,10 +26,6 @@
                     <i class="fa-solid fa-table-columns"></i>
                 </Navlink>
 
-                <Navlink :href="route('boards')" header="Обрані">
-                    <i class="fa-solid fa-star"></i>
-                </Navlink>
-
                 <!-- <Navlink :href="route('shared')" header="Спільні дошки">
                     <i class="fa-solid fa-share-nodes"></i>
                 </Navlink> -->
@@ -95,7 +91,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import Navlink from "./Navlink.vue";
 
 const isOpen = ref(false);

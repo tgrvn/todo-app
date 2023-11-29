@@ -33,4 +33,12 @@ return [
         realpath(storage_path('framework/views'))
     ),
 
+    'entrypoints' => [
+        'resources/js/app.js',
+    ],
+    'ignore_patterns' => [
+        '/\.d$/',
+        '/\.json$/',
+    ],
+    'dev_url' => env('DEV_SERVER_URL', 'http://localhost:5173'),
 ];

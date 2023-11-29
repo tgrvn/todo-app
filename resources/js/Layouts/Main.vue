@@ -1,9 +1,9 @@
 <template>
-    <Aside />
-
     <div class="p-4">
         <slot />
     </div>
+
+    <Aside />
 </template>
 
 <script setup>
